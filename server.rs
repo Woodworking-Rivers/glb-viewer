@@ -49,7 +49,7 @@ async fn main() {
 
     println!("Data directory:   {}", data_dir.display());
     println!("Serving at http://localhost:{}", args.port);
-    println!("To view a model: http://localhost:{}/glb-viewer.html?model=path/to/model.glb", args.port);
+    println!("To view a model: http://localhost:{}/?model=path/to/model.glb", args.port);
 
     let data_service = ServeDir::new(&data_dir);
     
