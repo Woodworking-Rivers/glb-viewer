@@ -1,3 +1,4 @@
+load("@rules_python//python:defs.bzl", "py_binary")
 
 exports_files(["glb-viewer.html", "glb-viewer.css", "glb-viewer.js"])
 
@@ -9,4 +10,13 @@ filegroup(
         "glb-viewer.js",
     ],
     visibility = ["//visibility:public"],
+)
+
+py_binary(
+    name = "server",
+    srcs = ["server.py"],
+    main = "server.py",
+    data = [
+        ":glb_viewer",
+    ]
 )
