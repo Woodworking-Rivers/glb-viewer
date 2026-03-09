@@ -1,4 +1,4 @@
-load("@rules_python//python:defs.bzl", "py_binary")
+load("@rules_rust//rust:defs.bzl", "rust_binary")
 
 exports_files(["glb-viewer.html", "glb-viewer.css", "glb-viewer.js"])
 
@@ -12,11 +12,20 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-py_binary(
+rust_binary(
     name = "server",
-    srcs = ["server.py"],
-    main = "server.py",
+    srcs = ["server.rs"],
+    edition = "2021",
     data = [
         ":glb_viewer",
-    ]
+    ],
+    deps = [
+        "@crates//:axum",
+        "@crates//:tokio",
+        "@crates//:tower-http",
+        "@crates//:tower",
+        "@crates//:clap",
+        "@crates//:tracing",
+        "@crates//:tracing-subscriber",
+    ],
 )
