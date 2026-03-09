@@ -16,8 +16,10 @@ rust_binary(
     name = "server",
     srcs = ["server.rs"],
     edition = "2021",
-    data = [
-        ":glb_viewer",
+    compile_data = [
+        "glb-viewer.html",
+        "glb-viewer.css",
+        "glb-viewer.js",
     ],
     deps = [
         "@crates//:axum",
