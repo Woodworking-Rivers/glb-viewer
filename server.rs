@@ -45,8 +45,7 @@ async fn main() {
     if let Ok(workspace_dir) = std::env::var("BUILD_WORKSPACE_DIRECTORY") {
         std::env::set_current_dir(&workspace_dir).unwrap();
     }
-
-    let data_dir = Path::new(&args.directory).canonicalize().unwrap_or_else(|_| PathBuf::from(&args.directory));
+    let data_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from(&args.directory));
 
     println!("Data directory:   {}", data_dir.display());
     println!("Serving at http://localhost:{}", args.port);
