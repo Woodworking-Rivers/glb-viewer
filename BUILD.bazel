@@ -1,0 +1,12 @@
+
+exports_files(["glb-viewer.html", "glb-viewer.css", "glb-viewer.js"])
+
+filegroup(
+    name = "glb_viewer",
+    srcs = [
+        "glb-viewer.html",
+        "glb-viewer.css",
+        "glb-viewer.js",
+    ],
+    visibility = ["//visibility:public"],
+)

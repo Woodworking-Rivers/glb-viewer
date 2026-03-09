@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Viewer</title>
+    <!-- Import the component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="glb-viewer.css">
+</head>
+
+<body>
+    <div id="progress-bar"></div>
+
+    <header class="header">
+        <h1>Woodwork Attenuator Viewer</h1>
+        <div id="model-name">Loading model...</div>
+    </header>
+
+    <model-viewer id="viewer" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"
+        touch-action="pan-y" alt="A 3D model">
+
+        <div class="controls">
+            <span>Left Click: Rotate</span>
+            <span style="color: var(--glass-border)">|</span>
+            <span>Scroll: Zoom</span>
+            <span style="color: var(--glass-border)">|</span>
+            <span>Right Click: Pan</span>
+        </div>
+
+        <div id="info" class="info-panel" style="display: none;">
+            <h2>Model Details</h2>
+            <div id="model-stats"></div>
+        </div>
+
+        <div id="error" class="error-message">
+            <h3>Failed to load model</h3>
+            <p>Make sure the model path is correct in the URL parameter.</p>
+            <p style="font-size: 0.8rem; color: #94a3b8;">Example: ?model=box.glb</p>
+        </div>
+    </model-viewer>
+
+    <script src="glb-viewer.js"></script>
+</body>
+
+</html>
